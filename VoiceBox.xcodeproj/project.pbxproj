@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0699AFBD1BCF4802005464F2 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699AFB91BCF4802005464F2 /* libSuperpoweredAudioIOS.a */; };
+		0699AFBE1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0699AFBC1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm */; };
 		06BA44441BCF4304000BA3C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44431BCF4304000BA3C1 /* main.m */; };
 		06BA44471BCF4304000BA3C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44461BCF4304000BA3C1 /* AppDelegate.m */; };
 		06BA444A1BCF4304000BA3C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44491BCF4304000BA3C1 /* ViewController.m */; };
@@ -14,6 +16,11 @@
 		06BA444F1BCF4304000BA3C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06BA444E1BCF4304000BA3C1 /* Images.xcassets */; };
 		06BA44521BCF4304000BA3C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06BA44501BCF4304000BA3C1 /* LaunchScreen.xib */; };
 		06BA445E1BCF4304000BA3C1 /* VoiceBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA445D1BCF4304000BA3C1 /* VoiceBoxTests.m */; };
+		06E654351BCF486000F0B8CD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654341BCF486000F0B8CD /* CoreMedia.framework */; };
+		06E654371BCF486900F0B8CD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654361BCF486900F0B8CD /* MediaPlayer.framework */; };
+		06E654391BCF487000F0B8CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654381BCF487000F0B8CD /* AVFoundation.framework */; };
+		06E6543B1BCF487800F0B8CD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E6543A1BCF487800F0B8CD /* AudioToolbox.framework */; };
+		6D71FF45CBC587CE66FDE528 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8131CC4CA890CE1C0F15FF24 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0699AFB91BCF4802005464F2 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
+		0699AFBA1BCF4802005464F2 /* SuperpoweredBandpassFilterbank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredBandpassFilterbank.h; path = Superpowered/SuperpoweredBandpassFilterbank.h; sourceTree = "<group>"; };
+		0699AFBB1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
+		0699AFBC1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
 		06BA443E1BCF4304000BA3C1 /* VoiceBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BA44421BCF4304000BA3C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06BA44431BCF4304000BA3C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +51,13 @@
 		06BA44571BCF4304000BA3C1 /* VoiceBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BA445C1BCF4304000BA3C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06BA445D1BCF4304000BA3C1 /* VoiceBoxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoiceBoxTests.m; sourceTree = "<group>"; };
+		06E654341BCF486000F0B8CD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		06E654361BCF486900F0B8CD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		06E654381BCF487000F0B8CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		06E6543A1BCF487800F0B8CD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8131CC4CA890CE1C0F15FF24 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A089D4AAC30B3D768089B015 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F42CCEA00071FE8327B5A487 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +65,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E6543B1BCF487800F0B8CD /* AudioToolbox.framework in Frameworks */,
+				06E654391BCF487000F0B8CD /* AVFoundation.framework in Frameworks */,
+				06E654371BCF486900F0B8CD /* MediaPlayer.framework in Frameworks */,
+				06E654351BCF486000F0B8CD /* CoreMedia.framework in Frameworks */,
+				6D71FF45CBC587CE66FDE528 /* libPods.a in Frameworks */,
+				0699AFBD1BCF4802005464F2 /* libSuperpoweredAudioIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +84,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0699AFBF1BCF4808005464F2 /* Superpowered */ = {
+			isa = PBXGroup;
+			children = (
+				0699AFB91BCF4802005464F2 /* libSuperpoweredAudioIOS.a */,
+				0699AFBA1BCF4802005464F2 /* SuperpoweredBandpassFilterbank.h */,
+				0699AFBB1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.h */,
+				0699AFBC1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm */,
+			);
+			name = Superpowered;
+			sourceTree = "<group>";
+		};
 		06BA44351BCF4304000BA3C1 = {
 			isa = PBXGroup;
 			children = (
+				0699AFBF1BCF4808005464F2 /* Superpowered */,
 				06BA44401BCF4304000BA3C1 /* VoiceBox */,
 				06BA445A1BCF4304000BA3C1 /* VoiceBoxTests */,
 				06BA443F1BCF4304000BA3C1 /* Products */,
+				9A48F06F145EDE15DED635E4 /* Pods */,
+				3F5827B0A20D53E152BFA9DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +157,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3F5827B0A20D53E152BFA9DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06E6543A1BCF487800F0B8CD /* AudioToolbox.framework */,
+				06E654381BCF487000F0B8CD /* AVFoundation.framework */,
+				06E654361BCF486900F0B8CD /* MediaPlayer.framework */,
+				06E654341BCF486000F0B8CD /* CoreMedia.framework */,
+				8131CC4CA890CE1C0F15FF24 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A48F06F145EDE15DED635E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F42CCEA00071FE8327B5A487 /* Pods.debug.xcconfig */,
+				A089D4AAC30B3D768089B015 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 06BA44611BCF4304000BA3C1 /* Build configuration list for PBXNativeTarget "VoiceBox" */;
 			buildPhases = (
+				375FD1502CA875CADD134683 /* Check Pods Manifest.lock */,
 				06BA443A1BCF4304000BA3C1 /* Sources */,
 				06BA443B1BCF4304000BA3C1 /* Frameworks */,
 				06BA443C1BCF4304000BA3C1 /* Resources */,
+				C2F729BEB0EACB2F8BFE758E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,11 +275,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		375FD1502CA875CADD134683 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C2F729BEB0EACB2F8BFE758E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		06BA443A1BCF4304000BA3C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0699AFBE1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm in Sources */,
 				06BA444A1BCF4304000BA3C1 /* ViewController.m in Sources */,
 				06BA44471BCF4304000BA3C1 /* AppDelegate.m in Sources */,
 				06BA44441BCF4304000BA3C1 /* main.m in Sources */,
@@ -347,20 +442,30 @@
 		};
 		06BA44621BCF4304000BA3C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F42CCEA00071FE8327B5A487 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VoiceBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Superpowered",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		06BA44631BCF4304000BA3C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A089D4AAC30B3D768089B015 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VoiceBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Superpowered",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -418,6 +523,7 @@
 				06BA44631BCF4304000BA3C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		06BA44641BCF4304000BA3C1 /* Build configuration list for PBXNativeTarget "VoiceBoxTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +532,7 @@
 				06BA44661BCF4304000BA3C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
