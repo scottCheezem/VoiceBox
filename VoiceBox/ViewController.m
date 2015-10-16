@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SuperPowered.h"
+
+
 @interface ViewController ()
 @property(nonatomic, retain)Superpowered *superPowered;
 @property(nonatomic, retain)CADisplayLink *displayLink;

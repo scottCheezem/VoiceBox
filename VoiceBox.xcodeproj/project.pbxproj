@@ -16,6 +16,7 @@
 		06BA444F1BCF4304000BA3C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06BA444E1BCF4304000BA3C1 /* Images.xcassets */; };
 		06BA44521BCF4304000BA3C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06BA44501BCF4304000BA3C1 /* LaunchScreen.xib */; };
 		06BA445E1BCF4304000BA3C1 /* VoiceBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA445D1BCF4304000BA3C1 /* VoiceBoxTests.m */; };
+		06DC207B1BD0A13A00E1F16F /* BeanBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DC207A1BD0A13A00E1F16F /* BeanBrowserViewController.m */; };
 		06E654351BCF486000F0B8CD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654341BCF486000F0B8CD /* CoreMedia.framework */; };
 		06E654371BCF486900F0B8CD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654361BCF486900F0B8CD /* MediaPlayer.framework */; };
 		06E654391BCF487000F0B8CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654381BCF487000F0B8CD /* AVFoundation.framework */; };
@@ -52,6 +53,8 @@
 		06BA44571BCF4304000BA3C1 /* VoiceBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BA445C1BCF4304000BA3C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06BA445D1BCF4304000BA3C1 /* VoiceBoxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoiceBoxTests.m; sourceTree = "<group>"; };
+		06DC20791BD0A13A00E1F16F /* BeanBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeanBrowserViewController.h; sourceTree = "<group>"; };
+		06DC207A1BD0A13A00E1F16F /* BeanBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeanBrowserViewController.m; sourceTree = "<group>"; };
 		06E654341BCF486000F0B8CD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		06E654361BCF486900F0B8CD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		06E654381BCF487000F0B8CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +133,8 @@
 				06BA44461BCF4304000BA3C1 /* AppDelegate.m */,
 				06BA44481BCF4304000BA3C1 /* ViewController.h */,
 				06BA44491BCF4304000BA3C1 /* ViewController.m */,
+				06DC20791BD0A13A00E1F16F /* BeanBrowserViewController.h */,
+				06DC207A1BD0A13A00E1F16F /* BeanBrowserViewController.m */,
 				06BA444B1BCF4304000BA3C1 /* Main.storyboard */,
 				06BA444E1BCF4304000BA3C1 /* Images.xcassets */,
 				06BA44501BCF4304000BA3C1 /* LaunchScreen.xib */,
@@ -321,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0699AFBE1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm in Sources */,
+				06DC207B1BD0A13A00E1F16F /* BeanBrowserViewController.m in Sources */,
 				06BA444A1BCF4304000BA3C1 /* ViewController.m in Sources */,
 				06E654401BCF4DB000F0B8CD /* SuperPowered.mm in Sources */,
 				06BA44471BCF4304000BA3C1 /* AppDelegate.m in Sources */,
