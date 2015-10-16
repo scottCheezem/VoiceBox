@@ -6,19 +6,19 @@
 //  Copyright (c) 2015 Scott Cheezem. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AudioViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SuperPowered.h"
 
 
-@interface ViewController ()
+@interface AudioViewController ()
 @property(nonatomic, retain)Superpowered *superPowered;
 @property(nonatomic, retain)CADisplayLink *displayLink;
 @property(nonatomic, retain)NSMutableArray *layers;
 
 @end
 
-@implementation ViewController
+@implementation AudioViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

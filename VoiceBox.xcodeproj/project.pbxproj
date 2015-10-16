@@ -11,7 +11,7 @@
 		0699AFBE1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0699AFBC1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm */; };
 		06BA44441BCF4304000BA3C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44431BCF4304000BA3C1 /* main.m */; };
 		06BA44471BCF4304000BA3C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44461BCF4304000BA3C1 /* AppDelegate.m */; };
-		06BA444A1BCF4304000BA3C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44491BCF4304000BA3C1 /* ViewController.m */; };
+		06BA444A1BCF4304000BA3C1 /* AudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44491BCF4304000BA3C1 /* AudioViewController.m */; };
 		06BA444D1BCF4304000BA3C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BA444B1BCF4304000BA3C1 /* Main.storyboard */; };
 		06BA444F1BCF4304000BA3C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06BA444E1BCF4304000BA3C1 /* Images.xcassets */; };
 		06BA44521BCF4304000BA3C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06BA44501BCF4304000BA3C1 /* LaunchScreen.xib */; };
@@ -45,8 +45,8 @@
 		06BA44431BCF4304000BA3C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06BA44451BCF4304000BA3C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		06BA44461BCF4304000BA3C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		06BA44481BCF4304000BA3C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		06BA44491BCF4304000BA3C1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		06BA44481BCF4304000BA3C1 /* AudioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioViewController.h; sourceTree = "<group>"; };
+		06BA44491BCF4304000BA3C1 /* AudioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioViewController.m; sourceTree = "<group>"; };
 		06BA444C1BCF4304000BA3C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06BA444E1BCF4304000BA3C1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06BA44511BCF4304000BA3C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 				06E654421BCF4E5600F0B8CD /* SuperPowered.h */,
 				06BA44451BCF4304000BA3C1 /* AppDelegate.h */,
 				06BA44461BCF4304000BA3C1 /* AppDelegate.m */,
-				06BA44481BCF4304000BA3C1 /* ViewController.h */,
-				06BA44491BCF4304000BA3C1 /* ViewController.m */,
+				06BA44481BCF4304000BA3C1 /* AudioViewController.h */,
+				06BA44491BCF4304000BA3C1 /* AudioViewController.m */,
 				06DC20791BD0A13A00E1F16F /* BeanBrowserViewController.h */,
 				06DC207A1BD0A13A00E1F16F /* BeanBrowserViewController.m */,
 				06BA444B1BCF4304000BA3C1 /* Main.storyboard */,
@@ -327,7 +327,7 @@
 			files = (
 				0699AFBE1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm in Sources */,
 				06DC207B1BD0A13A00E1F16F /* BeanBrowserViewController.m in Sources */,
-				06BA444A1BCF4304000BA3C1 /* ViewController.m in Sources */,
+				06BA444A1BCF4304000BA3C1 /* AudioViewController.m in Sources */,
 				06E654401BCF4DB000F0B8CD /* SuperPowered.mm in Sources */,
 				06BA44471BCF4304000BA3C1 /* AppDelegate.m in Sources */,
 				06BA44441BCF4304000BA3C1 /* main.m in Sources */,
