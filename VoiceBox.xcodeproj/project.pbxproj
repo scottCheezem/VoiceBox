@@ -20,6 +20,7 @@
 		06E654371BCF486900F0B8CD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654361BCF486900F0B8CD /* MediaPlayer.framework */; };
 		06E654391BCF487000F0B8CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E654381BCF487000F0B8CD /* AVFoundation.framework */; };
 		06E6543B1BCF487800F0B8CD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E6543A1BCF487800F0B8CD /* AudioToolbox.framework */; };
+		06E654401BCF4DB000F0B8CD /* SuperPowered.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06E6543F1BCF4DB000F0B8CD /* SuperPowered.mm */; };
 		6D71FF45CBC587CE66FDE528 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8131CC4CA890CE1C0F15FF24 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,9 @@
 		06E654361BCF486900F0B8CD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		06E654381BCF487000F0B8CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		06E6543A1BCF487800F0B8CD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		06E6543F1BCF4DB000F0B8CD /* SuperPowered.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperPowered.mm; path = /Users/scottcheezem/Dev/VoiceBox/VoiceBox/SuperPowered.mm; sourceTree = "<absolute>"; };
+		06E654411BCF4E0400F0B8CD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
+		06E654421BCF4E5600F0B8CD /* SuperPowered.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperPowered.h; sourceTree = "<group>"; };
 		8131CC4CA890CE1C0F15FF24 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A089D4AAC30B3D768089B015 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F42CCEA00071FE8327B5A487 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				0699AFB91BCF4802005464F2 /* libSuperpoweredAudioIOS.a */,
+				06E654411BCF4E0400F0B8CD /* SuperpoweredSimple.h */,
 				0699AFBA1BCF4802005464F2 /* SuperpoweredBandpassFilterbank.h */,
 				0699AFBB1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.h */,
 				0699AFBC1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm */,
@@ -119,6 +124,8 @@
 		06BA44401BCF4304000BA3C1 /* VoiceBox */ = {
 			isa = PBXGroup;
 			children = (
+				06E6543F1BCF4DB000F0B8CD /* SuperPowered.mm */,
+				06E654421BCF4E5600F0B8CD /* SuperPowered.h */,
 				06BA44451BCF4304000BA3C1 /* AppDelegate.h */,
 				06BA44461BCF4304000BA3C1 /* AppDelegate.m */,
 				06BA44481BCF4304000BA3C1 /* ViewController.h */,
@@ -315,6 +322,7 @@
 			files = (
 				0699AFBE1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm in Sources */,
 				06BA444A1BCF4304000BA3C1 /* ViewController.m in Sources */,
+				06E654401BCF4DB000F0B8CD /* SuperPowered.mm in Sources */,
 				06BA44471BCF4304000BA3C1 /* AppDelegate.m in Sources */,
 				06BA44441BCF4304000BA3C1 /* main.m in Sources */,
 			);
