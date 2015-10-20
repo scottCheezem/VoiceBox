@@ -50,6 +50,12 @@
 -(void)onDisplayLink {
     
     
+//    Byte beanData[4] = { 0, 1, 2, 3 };
+//    NSData *beanPayload = [NSData dataWithBytes:beanData length:sizeof(beanData)];
+//    [self.lightControllerBean sendSerialData:beanPayload];
+    
+    [self.lightControllerBean sendSerialString:@"TEST"];
+    
     float frequencies[8] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
     
     [_superPowered getFrequencies:frequencies];

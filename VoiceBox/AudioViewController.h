@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PTDBean.h>
 
 @interface AudioViewController : UIViewController
-
+@property(nonatomic, retain)PTDBean *lightControllerBean;
 
 @end
 

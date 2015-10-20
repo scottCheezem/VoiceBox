@@ -23,6 +23,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.setOfBeans = [[NSMutableOrderedSet alloc]init];
+    self.beanManager = [[PTDBeanManager alloc]initWithDelegate:self];
     
 }
   
@@ -55,6 +56,8 @@
 
 -(void)beanManager:(PTDBeanManager *)beanManager didConnectBean:(PTDBean *)bean error:(NSError *)error{
     //dissmiss the modal here, and set the bean for communication on the main viewcontroller
+    self.audioViewController.lightControllerBean = bean;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)beanManagerDidUpdateState:(PTDBeanManager *)beanManager{
@@ -72,6 +75,18 @@
     beanCell.textLabel.text = aBean.name;
     beanCell.detailTextLabel.text = [NSString stringWithFormat:@"rssi:%i", aBean.RSSI.intValue];
     return beanCell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    PTDBean *selectedBean = (PTDBean*)self.setOfBeans.array[indexPath.row];
+    NSError *error;
+    [self.beanManager connectToBean:selectedBean error:&error];
+    if (error) {
+        NSLog(@"error connecting:%@", error);
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+
+    
 }
 
 - (IBAction)dissmissAction:(id)sender {
