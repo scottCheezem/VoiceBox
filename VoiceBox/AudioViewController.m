@@ -11,7 +11,7 @@
 #import "SuperPowered.h"
 #import "BeanBrowserViewController.h"
 #import <PTDBean.h>
-
+#define NUM_BANDS 8
 @interface AudioViewController ()<PTDBeanDelegate>
 @property(nonatomic, retain)Superpowered *superPowered;
 @property(nonatomic, retain)CADisplayLink *displayLink;
@@ -29,7 +29,7 @@
     
     UIColor *color = [[UIColor colorWithRed:0 green:0.6 blue:0.8 alpha:1]init];
     _layers = [[NSMutableArray alloc]init];
-    for (int i = 0 ; i <= 7 ; i++){
+    for (int i = 0 ; i <= NUM_BANDS-1 ; i++){
         CALayer *aLayer = [[CALayer alloc]init];
         aLayer.backgroundColor = color.CGColor;
         aLayer.frame = CGRectZero;
@@ -51,14 +51,14 @@
 
 -(void)setLightControllerBean:(PTDBean *)lightControllerBean{
     _lightControllerBean = lightControllerBean;
-    beanTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(updateBean) userInfo:nil repeats:YES];
+    beanTimer = [NSTimer scheduledTimerWithTimeInterval:0.25f target:self selector:@selector(updateBean) userInfo:nil repeats:YES];
     _lightControllerBean.delegate = self;
 }
 
 -(void)onDisplayLink {
 
     
-    float frequencies[8] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
+    float frequencies[] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
     
     [_superPowered getFrequencies:frequencies];
     
@@ -68,8 +68,11 @@
     
     
     CGFloat originY = self.view.frame.size.height - 20;
-    CGFloat width = (self.view.frame.size.width - 47)/8;
+    CGFloat width = (self.view.frame.size.width - 47)/NUM_BANDS;
     CGRect frame = CGRectMake(20, 0, width, 0);
+    
+//    float medianFrequency = 
+    
     
     for (CALayer *aLayer in _layers){
         int index = [NSNumber numberWithUnsignedInteger:[_layers indexOfObject:aLayer]].intValue;
@@ -86,7 +89,7 @@
 
 -(void)updateBean{
     
-    float frequencies[8] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
+    float frequencies[NUM_BANDS] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
     
     [_superPowered getFrequencies:frequencies];
 
