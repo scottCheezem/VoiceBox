@@ -9,16 +9,19 @@
 #import "AudioViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SuperPowered.h"
+#import "BeanBrowserViewController.h"
+#import <PTDBean.h>
 
-
-@interface AudioViewController ()
+@interface AudioViewController ()<PTDBeanDelegate>
 @property(nonatomic, retain)Superpowered *superPowered;
 @property(nonatomic, retain)CADisplayLink *displayLink;
 @property(nonatomic, retain)NSMutableArray *layers;
 
 @end
 
-@implementation AudioViewController
+@implementation AudioViewController{
+    NSTimer *beanTimer;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +38,7 @@
     }
     
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink)];
-    _displayLink.frameInterval = 1;
+    _displayLink.frameInterval = 2;
     [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     
 }
@@ -46,15 +49,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)setLightControllerBean:(PTDBean *)lightControllerBean{
+    _lightControllerBean = lightControllerBean;
+    beanTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(updateBean) userInfo:nil repeats:YES];
+    _lightControllerBean.delegate = self;
+}
 
 -(void)onDisplayLink {
-    
-    
-//    Byte beanData[4] = { 0, 1, 2, 3 };
-//    NSData *beanPayload = [NSData dataWithBytes:beanData length:sizeof(beanData)];
-//    [self.lightControllerBean sendSerialData:beanPayload];
-    
-    [self.lightControllerBean sendSerialString:@"TEST"];
+
     
     float frequencies[8] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
     
@@ -78,6 +80,41 @@
     }
     
     [CATransaction commit];
+    
+    
+}
+
+-(void)updateBean{
+    
+    float frequencies[8] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
+    
+    [_superPowered getFrequencies:frequencies];
+
+    [self.lightControllerBean sendSerialString:@"TEST"]; //but really send the freqs or something else...
+//    NSLog(@"%lu", sizeof(frequencies));
+//    
+////        Byte beanData[4] = { 0, 1, 2, 3 };
+//        NSData *beanPayload = [NSData dataWithBytes:frequencies length:sizeof(frequencies)];
+//        [self.lightControllerBean sendSerialData:beanPayload];
+    
+    
+}
+
+
+
+-(void)bean:(PTDBean *)bean serialDataReceived:(NSData *)data{
+    NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"beanBrowserSegue"]) {
+        UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
+        BeanBrowserViewController *browserViewController = (BeanBrowserViewController*)navController.childViewControllers.firstObject;
+        browserViewController.audioViewController = self;
+    }
     
     
 }
