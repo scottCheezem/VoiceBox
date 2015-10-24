@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		065C102B1BDC388400567487 /* TAAEAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065C102A1BDC388400567487 /* TAAEAudioViewController.m */; };
 		0699AFBD1BCF4802005464F2 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699AFB91BCF4802005464F2 /* libSuperpoweredAudioIOS.a */; };
 		0699AFBE1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0699AFBC1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.mm */; };
 		06BA44441BCF4304000BA3C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA44431BCF4304000BA3C1 /* main.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		065C10291BDC388400567487 /* TAAEAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAEAudioViewController.h; sourceTree = "<group>"; };
+		065C102A1BDC388400567487 /* TAAEAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAEAudioViewController.m; sourceTree = "<group>"; };
 		0699AFB91BCF4802005464F2 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		0699AFBA1BCF4802005464F2 /* SuperpoweredBandpassFilterbank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredBandpassFilterbank.h; path = Superpowered/SuperpoweredBandpassFilterbank.h; sourceTree = "<group>"; };
 		0699AFBB1BCF4802005464F2 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 		06BA44401BCF4304000BA3C1 /* VoiceBox */ = {
 			isa = PBXGroup;
 			children = (
+				065C10291BDC388400567487 /* TAAEAudioViewController.h */,
+				065C102A1BDC388400567487 /* TAAEAudioViewController.m */,
 				06E6543F1BCF4DB000F0B8CD /* SuperPowered.mm */,
 				06E654421BCF4E5600F0B8CD /* SuperPowered.h */,
 				06BA44451BCF4304000BA3C1 /* AppDelegate.h */,
@@ -331,6 +336,7 @@
 				06E654401BCF4DB000F0B8CD /* SuperPowered.mm in Sources */,
 				06BA44471BCF4304000BA3C1 /* AppDelegate.m in Sources */,
 				06BA44441BCF4304000BA3C1 /* main.m in Sources */,
+				065C102B1BDC388400567487 /* TAAEAudioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

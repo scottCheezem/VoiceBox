@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Audio View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TAAEAudioViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -27,14 +27,34 @@
                                     <segue destination="024-IN-5dS" kind="presentation" identifier="beanBrowserSegue" id="xqw-46-rL7"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RuA-CR-602">
+                                <rect key="frame" x="225" y="89" width="150" height="2"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="EKT-Ri-0az"/>
+                                </constraints>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZKU-ua-Q5i">
+                                <rect key="frame" x="225" y="121" width="150" height="2"/>
+                                <animations/>
+                            </progressView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="RuA-CR-602" firstAttribute="centerX" secondItem="ZKU-ua-Q5i" secondAttribute="centerX" id="3r3-4K-L7o"/>
+                            <constraint firstItem="RuA-CR-602" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="69" id="4YU-tJ-AgH"/>
+                            <constraint firstItem="ZKU-ua-Q5i" firstAttribute="top" secondItem="RuA-CR-602" secondAttribute="bottom" constant="30" id="97f-hc-d5s"/>
                             <constraint firstItem="Teu-eX-70R" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="F7O-cB-K6v"/>
                             <constraint firstItem="Teu-eX-70R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="f0p-V8-0bI"/>
+                            <constraint firstItem="RuA-CR-602" firstAttribute="width" secondItem="ZKU-ua-Q5i" secondAttribute="width" id="jCJ-Dw-Jzw"/>
+                            <constraint firstAttribute="centerX" secondItem="RuA-CR-602" secondAttribute="centerX" id="q98-nQ-J3n"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="inputAveBar" destination="RuA-CR-602" id="4M0-ih-MH5"/>
+                        <outlet property="inputPeakBar" destination="ZKU-ua-Q5i" id="3h2-gi-aOx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
