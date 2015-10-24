@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AudioViewController.h"
+#import "SperPoweredSDKAudioViewController.h"
 @interface BeanBrowserViewController : UIViewController
-@property(nonatomic, weak)AudioViewController *audioViewController;
+@property(nonatomic, weak)SperPoweredSDKAudioViewController *audioViewController;
 @end

@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_Bean_iOS_OSX_SDK 10
 #define COCOAPODS_VERSION_PATCH_Bean_iOS_OSX_SDK 0
 
+// TheAmazingAudioEngine
+#define COCOAPODS_POD_AVAILABLE_TheAmazingAudioEngine
+#define COCOAPODS_VERSION_MAJOR_TheAmazingAudioEngine 1
+#define COCOAPODS_VERSION_MINOR_TheAmazingAudioEngine 5
+#define COCOAPODS_VERSION_PATCH_TheAmazingAudioEngine 2
+

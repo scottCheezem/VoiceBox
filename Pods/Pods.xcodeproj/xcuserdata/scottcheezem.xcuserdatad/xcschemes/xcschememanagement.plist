@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TheAmazingAudioEngine.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>7F21B4B6FC7607ECC67BC15F</key>
+		<key>6FE88F98473D7910CB7EBDA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A87A8C0DE39119E365CAB57D</key>
+		<key>C80CDD68163C3EC0647C631F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB5EAB1614EFC9EFBDEC510B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

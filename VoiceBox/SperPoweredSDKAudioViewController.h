@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <PTDBean.h>
 
-@interface AudioViewController : UIViewController
+@interface SperPoweredSDKAudioViewController : UIViewController
 @property(nonatomic, retain)PTDBean *lightControllerBean;
 
 @end

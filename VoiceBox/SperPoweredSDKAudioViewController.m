@@ -6,20 +6,20 @@
 //  Copyright (c) 2015 Scott Cheezem. All rights reserved.
 //
 
-#import "AudioViewController.h"
+#import "SperPoweredSDKAudioViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SuperPowered.h"
 #import "BeanBrowserViewController.h"
 #import <PTDBean.h>
 #define NUM_BANDS 8
-@interface AudioViewController ()<PTDBeanDelegate>
+@interface SperPoweredSDKAudioViewController ()<PTDBeanDelegate>
 @property(nonatomic, retain)Superpowered *superPowered;
 @property(nonatomic, retain)CADisplayLink *displayLink;
 @property(nonatomic, retain)NSMutableArray *layers;
 
 @end
 
-@implementation AudioViewController{
+@implementation SperPoweredSDKAudioViewController{
     NSTimer *beanTimer;
 }
 

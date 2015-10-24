@@ -1,10 +1,13 @@
 PODS:
   - Bean-iOS-OSX-SDK (0.10.0)
+  - TheAmazingAudioEngine (1.5.2)
 
 DEPENDENCIES:
   - Bean-iOS-OSX-SDK
+  - TheAmazingAudioEngine
 
 SPEC CHECKSUMS:
   Bean-iOS-OSX-SDK: 7396a43e999a2e53c16e89ff302ffea5fcc1c4c5
+  TheAmazingAudioEngine: 1151341915dc91620bc6b2a7a5bf5920001b4f75
 
 COCOAPODS: 0.37.2
