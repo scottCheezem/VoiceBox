@@ -17,8 +17,10 @@
 
 
 @interface TAAEAudioViewController ()
-@property(nonatomic, retain)AEAudioController *audioController;
+@property(nonatomic, retain) AEAudioController *audioController;
 @property (nonatomic, strong) AEPlaythroughChannel *playthrough;
+@property (nonatomic, strong) AEAudioUnitFilter *pitchFilter;
+
 @property (weak, nonatomic) IBOutlet UISwitch *playThroughSwitch;
 @property(nonatomic, weak)NSTimer *levelsTimer;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputAveBar;
@@ -61,24 +63,11 @@
     self.audioController = [[AEAudioController alloc]initWithAudioDescription:asbd inputEnabled:YES];
     self.audioController.preferredBufferDuration = 0.005;
     
-    
-    //add a recorder?
-
-    AudioComponentDescription description = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_Varispeed);
-
-    AEAudioUnitFilter *pitchFilter = [[AEAudioUnitFilter alloc]initWithComponentDescription:description];
-    
-    AudioUnitSetParameter(pitchFilter.audioUnit,
-                          kAudioUnitScope_Global, 0, 
-                          kVarispeedParam_PlaybackRate, 1.25, 0);
-    [self.audioController addFilter:pitchFilter];
-    
-    
     NSError *startAudioError = nil;
     [self.audioController start:&startAudioError];
     
     self.levelsTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateLevels:) userInfo:nil repeats:YES];
-    
+
 }
 
 
@@ -118,7 +107,27 @@ static inline float translate(float val, float min, float max) {
     }
 }
 
+-(IBAction)pitchSliderValueChanged:(UISlider*)sender{
 
+    [self.pitchFilter setParameterValue:[NSNumber numberWithFloat:sender.value].doubleValue forId:kVarispeedParam_PlaybackCents];
+}
+
+-(IBAction)pitchSwitchValueCHanged:(UISwitch*)sender{
+    
+    if(sender.isOn){
+        AudioComponentDescription description = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_Varispeed);
+        
+        self.pitchFilter = [[AEAudioUnitFilter alloc]initWithComponentDescription:description];
+        
+        AudioUnitSetParameter(_pitchFilter.audioUnit,
+                              kAudioUnitScope_Global, 0,
+                              kVarispeedParam_PlaybackCents, 0.5, 0);
+        [self.audioController addFilter:_pitchFilter toChannel:self.playthrough];
+    }else{
+        [self.audioController removeFilter:self.pitchFilter];
+        self.pitchFilter = nil;
+    }
+}
 
 /*
 #pragma mark - Navigation
