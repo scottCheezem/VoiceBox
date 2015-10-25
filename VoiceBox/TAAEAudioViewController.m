@@ -21,6 +21,7 @@
 @property(nonatomic, weak)NSTimer *levelsTimer;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputAveBar;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputPeakBar;
+@property (weak, nonatomic) IBOutlet UISlider *inputGainSlider;
 
 
 @end
@@ -33,7 +34,7 @@
 
     
     [self setupAduioController];
-    
+    self.inputGainSlider.value = self.audioController.inputGain;
     
     // Do any additional setup after loading the view.
 }
@@ -74,11 +75,16 @@ static inline float translate(float val, float min, float max) {
     
     Float32 inputAve, inputPeak;
     [self.audioController inputAveragePowerLevel:&inputAve peakHoldLevel:&inputPeak];
-    NSLog(@"inputAve:%f, inputPeak:%f", inputAve, inputPeak);
+//    NSLog(@"inputAve:%f, inputPeak:%f", inputAve, inputPeak);
     
     self.inputAveBar.progress = translate(inputAve, BAR_MIN_VAL, BAR_MAX_VAL);
     self.inputPeakBar.progress = translate(inputPeak, BAR_MIN_VAL, BAR_MAX_VAL);
     
+    //here is where we would send data to the bean...
+    
+}
+- (IBAction)inputGainSliderValueChanged:(UISlider*)sender {
+    self.audioController.inputGain = sender.value;
 }
 
 /*

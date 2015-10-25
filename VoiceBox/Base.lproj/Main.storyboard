@@ -27,17 +27,35 @@
                                     <segue destination="024-IN-5dS" kind="presentation" identifier="beanBrowserSegue" id="xqw-46-rL7"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RuA-CR-602">
-                                <rect key="frame" x="225" y="89" width="150" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RuA-CR-602">
+                                <rect key="frame" x="225" y="89" width="150" height="10"/>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Di5-Hl-Sqd"/>
                                     <constraint firstAttribute="width" constant="150" id="EKT-Ri-0az"/>
                                 </constraints>
                             </progressView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZKU-ua-Q5i">
-                                <rect key="frame" x="225" y="121" width="150" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZKU-ua-Q5i">
+                                <rect key="frame" x="225" y="129" width="150" height="10"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="qqj-8i-GKw"/>
+                                </constraints>
                             </progressView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.29999999999999999" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="343-Q1-kXr">
+                                <rect key="frame" x="223" y="184" width="154" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="inputGainSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="BvW-Ep-26M"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="input Gain" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQJ-DQ-pPc">
+                                <rect key="frame" x="138" y="188" width="79" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -46,13 +64,19 @@
                             <constraint firstItem="RuA-CR-602" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="69" id="4YU-tJ-AgH"/>
                             <constraint firstItem="ZKU-ua-Q5i" firstAttribute="top" secondItem="RuA-CR-602" secondAttribute="bottom" constant="30" id="97f-hc-d5s"/>
                             <constraint firstItem="Teu-eX-70R" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="F7O-cB-K6v"/>
+                            <constraint firstItem="ZKU-ua-Q5i" firstAttribute="centerX" secondItem="343-Q1-kXr" secondAttribute="centerX" id="Ti9-Mx-MxT"/>
+                            <constraint firstItem="ZKU-ua-Q5i" firstAttribute="width" secondItem="343-Q1-kXr" secondAttribute="width" id="VAJ-hX-s9B"/>
+                            <constraint firstItem="qQJ-DQ-pPc" firstAttribute="centerY" secondItem="343-Q1-kXr" secondAttribute="centerY" constant="-0.5" id="ZCM-zv-HOQ"/>
                             <constraint firstItem="Teu-eX-70R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="f0p-V8-0bI"/>
+                            <constraint firstItem="343-Q1-kXr" firstAttribute="leading" secondItem="qQJ-DQ-pPc" secondAttribute="trailing" constant="8" id="h4Q-t5-JM4"/>
                             <constraint firstItem="RuA-CR-602" firstAttribute="width" secondItem="ZKU-ua-Q5i" secondAttribute="width" id="jCJ-Dw-Jzw"/>
                             <constraint firstAttribute="centerX" secondItem="RuA-CR-602" secondAttribute="centerX" id="q98-nQ-J3n"/>
+                            <constraint firstItem="343-Q1-kXr" firstAttribute="top" secondItem="ZKU-ua-Q5i" secondAttribute="bottom" constant="45" id="s9A-j5-RAJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="inputAveBar" destination="RuA-CR-602" id="4M0-ih-MH5"/>
+                        <outlet property="inputGainSlider" destination="343-Q1-kXr" id="vfH-jR-BAh"/>
                         <outlet property="inputPeakBar" destination="ZKU-ua-Q5i" id="3h2-gi-aOx"/>
                     </connections>
                 </viewController>
