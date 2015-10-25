@@ -8,7 +8,8 @@
 
 #import "TAAEAudioViewController.h"
 #import "TheAmazingAudioEngine.h"
-
+#import "AENewTimePitchFilter.h"
+#import "AEVarispeedFilter.h"
 #import "AEPlaythroughChannel.h"
 
 #define BAR_MIN_VAL -20
@@ -19,7 +20,7 @@
 @interface TAAEAudioViewController ()
 @property(nonatomic, retain) AEAudioController *audioController;
 @property (nonatomic, strong) AEPlaythroughChannel *playthrough;
-@property (nonatomic, strong) AEAudioUnitFilter *pitchFilter;
+@property (nonatomic, strong) AENewTimePitchFilter *pitchFilter;
 
 @property (weak, nonatomic) IBOutlet UISwitch *playThroughSwitch;
 @property(nonatomic, weak)NSTimer *levelsTimer;
@@ -109,20 +110,15 @@ static inline float translate(float val, float min, float max) {
 
 -(IBAction)pitchSliderValueChanged:(UISlider*)sender{
 
-    [self.pitchFilter setParameterValue:[NSNumber numberWithFloat:sender.value].doubleValue forId:kVarispeedParam_PlaybackCents];
+    self.pitchFilter.pitch = sender.value ;
 }
 
 -(IBAction)pitchSwitchValueCHanged:(UISwitch*)sender{
     
     if(sender.isOn){
-        AudioComponentDescription description = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_Varispeed);
-        
-        self.pitchFilter = [[AEAudioUnitFilter alloc]initWithComponentDescription:description];
-        
-        AudioUnitSetParameter(_pitchFilter.audioUnit,
-                              kAudioUnitScope_Global, 0,
-                              kVarispeedParam_PlaybackCents, 0.5, 0);
-        [self.audioController addFilter:_pitchFilter toChannel:self.playthrough];
+        self.pitchFilter = [[AENewTimePitchFilter alloc]init];
+        self.pitchFilter.overlap = 12;//normally 8.0;
+        [self.audioController addFilter:self.pitchFilter];
     }else{
         [self.audioController removeFilter:self.pitchFilter];
         self.pitchFilter = nil;
