@@ -18,6 +18,8 @@
 
 @interface TAAEAudioViewController ()
 @property(nonatomic, retain)AEAudioController *audioController;
+@property (nonatomic, strong) AEPlaythroughChannel *playthrough;
+@property (weak, nonatomic) IBOutlet UISwitch *playThroughSwitch;
 @property(nonatomic, weak)NSTimer *levelsTimer;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputAveBar;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputPeakBar;
@@ -30,18 +32,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
-    
     [self setupAduioController];
-    self.inputGainSlider.value = self.audioController.inputGain;
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.inputGainSlider.value = self.audioController.inputGain;
+    self.playThroughSwitch.enabled = (self.playthrough == nil);
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -56,6 +60,20 @@
     
     self.audioController = [[AEAudioController alloc]initWithAudioDescription:asbd inputEnabled:YES];
     self.audioController.preferredBufferDuration = 0.005;
+    
+    
+    //add a recorder?
+
+    AudioComponentDescription description = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_Varispeed);
+
+    AEAudioUnitFilter *pitchFilter = [[AEAudioUnitFilter alloc]initWithComponentDescription:description];
+    
+    AudioUnitSetParameter(pitchFilter.audioUnit,
+                          kAudioUnitScope_Global, 0, 
+                          kVarispeedParam_PlaybackRate, 1.25, 0);
+    [self.audioController addFilter:pitchFilter];
+    
+    
     NSError *startAudioError = nil;
     [self.audioController start:&startAudioError];
     
@@ -86,6 +104,21 @@ static inline float translate(float val, float min, float max) {
 - (IBAction)inputGainSliderValueChanged:(UISlider*)sender {
     self.audioController.inputGain = sender.value;
 }
+
+
+- (IBAction)playthroughSwitchChanged:(UISwitch*)sender {
+    if ( sender.isOn ) {
+        self.playthrough = [[AEPlaythroughChannel alloc] initWithAudioController:_audioController];
+        [_audioController addInputReceiver:_playthrough];
+        [_audioController addChannels:@[_playthrough]];
+    } else {
+        [_audioController removeChannels:@[_playthrough]];
+        [_audioController removeInputReceiver:_playthrough];
+        self.playthrough = nil;
+    }
+}
+
+
 
 /*
 #pragma mark - Navigation
