@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TAAEAudioViewController : UIViewController
+@class PTDBean;
 
+
+@interface TAAEAudioViewController : UIViewController
+@property(nonatomic, retain)PTDBean *lightControllerBean;
 @end

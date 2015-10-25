@@ -12,12 +12,14 @@
 #import "AEVarispeedFilter.h"
 #import "AEPlaythroughChannel.h"
 
+#import "BeanBrowserViewController.h"
+#import <PTDBean.h>
 #define BAR_MIN_VAL -20
 #define BAR_MAX_VAL 0
 
 
 
-@interface TAAEAudioViewController ()
+@interface TAAEAudioViewController ()<PTDBeanDelegate>
 @property(nonatomic, retain) AEAudioController *audioController;
 @property (nonatomic, strong) AEPlaythroughChannel *playthrough;
 @property (nonatomic, strong) AENewTimePitchFilter *pitchFilter;
@@ -48,7 +50,7 @@
     [super viewWillAppear:animated];
     self.inputGainSlider.value = self.audioController.inputGain;
     self.playThroughSwitch.enabled = (self.playthrough == nil);
-    
+    self.levelsTimer = [NSTimer scheduledTimerWithTimeInterval:0.10 target:self selector:@selector(updateLevels:) userInfo:nil repeats:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -67,8 +69,13 @@
     NSError *startAudioError = nil;
     [self.audioController start:&startAudioError];
     
-    self.levelsTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateLevels:) userInfo:nil repeats:YES];
+    
 
+}
+
+-(void)setLightControllerBean:(PTDBean *)lightControllerBean{
+    _lightControllerBean = lightControllerBean;
+    _lightControllerBean.delegate = self;
 }
 
 
@@ -84,11 +91,17 @@ static inline float translate(float val, float min, float max) {
     Float32 inputAve, inputPeak;
     [self.audioController inputAveragePowerLevel:&inputAve peakHoldLevel:&inputPeak];
 //    NSLog(@"inputAve:%f, inputPeak:%f", inputAve, inputPeak);
+    float translatedInputPeak = translate(inputPeak, BAR_MIN_VAL, BAR_MAX_VAL);
     
     self.inputAveBar.progress = translate(inputAve, BAR_MIN_VAL, BAR_MAX_VAL);
-    self.inputPeakBar.progress = translate(inputPeak, BAR_MIN_VAL, BAR_MAX_VAL);
+    self.inputPeakBar.progress = translatedInputPeak;
     
-    //here is where we would send data to the bean...
+    
+    float scaledInputPeak = translatedInputPeak * 255;
+    NSNumber *beanFriendlyValues = [NSNumber numberWithFloat:scaledInputPeak];
+    NSLog(@"sending %@", beanFriendlyValues.stringValue);
+
+    [self.lightControllerBean sendSerialString:beanFriendlyValues.stringValue];
     
 }
 - (IBAction)inputGainSliderValueChanged:(UISlider*)sender {
@@ -125,14 +138,22 @@ static inline float translate(float val, float min, float max) {
     }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)bean:(PTDBean *)bean serialDataReceived:(NSData *)data{
+    NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(dataString);
 }
-*/
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"beanBrowserSegue"]) {
+        UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
+        BeanBrowserViewController *browserViewController = (BeanBrowserViewController*)navController.childViewControllers.firstObject;
+        browserViewController.audioViewController = self;
+    }
+    
+    
+}
 
 @end
