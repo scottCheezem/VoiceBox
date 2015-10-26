@@ -11,7 +11,8 @@
 #import "AENewTimePitchFilter.h"
 #import "AEVarispeedFilter.h"
 #import "AEPlaythroughChannel.h"
-
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "BeanBrowserViewController.h"
 #import <PTDBean.h>
 #define BAR_MIN_VAL -20
@@ -26,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *playThroughSwitch;
 @property(nonatomic, weak)NSTimer *levelsTimer;
+@property (nonatomic, weak)NSTimer *beanTimer;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputAveBar;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputPeakBar;
 @property (weak, nonatomic) IBOutlet UISlider *inputGainSlider;
@@ -57,6 +59,8 @@
     [super viewWillDisappear:animated];
     [self.levelsTimer invalidate];
     self.levelsTimer = nil;
+    [self.beanTimer invalidate];
+    self.beanTimer = nil;
 }
 
 
@@ -66,16 +70,42 @@
     self.audioController = [[AEAudioController alloc]initWithAudioDescription:asbd inputEnabled:YES];
     self.audioController.preferredBufferDuration = 0.005;
     
-    NSError *startAudioError = nil;
-    [self.audioController start:&startAudioError];
+    NSError *audioError = nil;
     
     
+    AVAudioSession* session = [AVAudioSession sharedInstance];
+    
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord
+    withOptions:AVAudioSessionCategoryOptionAllowBluetooth
+    error:&audioError];
+
+    
+//    BOOL success;
+//    NSError* error;
+    
+//    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+    
+    
+//    success = [session setActive:YES error:&error];
+    
+//    [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&audioError];
+    
+    
+//    else
+//    {
+//        UInt32 audioRouteOverride = kAudioSessionOutputRoute_Headphones;
+//        AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+//
+//    }
+    
+    [self.audioController start:&audioError];
 
 }
 
 -(void)setLightControllerBean:(PTDBean *)lightControllerBean{
     _lightControllerBean = lightControllerBean;
     _lightControllerBean.delegate = self;
+    self.beanTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateBean) userInfo:nil repeats:YES];
 }
 
 
@@ -97,13 +127,24 @@ static inline float translate(float val, float min, float max) {
     self.inputPeakBar.progress = translatedInputPeak;
     
     
+    
+    
+}
+
+-(void)updateBean{
+    
+    Float32 inputAve, inputPeak;
+    [self.audioController inputAveragePowerLevel:&inputAve peakHoldLevel:&inputPeak];
+    //    NSLog(@"inputAve:%f, inputPeak:%f", inputAve, inputPeak);
+    float translatedInputPeak = translate(inputPeak, BAR_MIN_VAL, BAR_MAX_VAL);
+    
     float scaledInputPeak = translatedInputPeak * 255;
     NSNumber *beanFriendlyValues = [NSNumber numberWithFloat:scaledInputPeak];
     NSLog(@"sending %@", beanFriendlyValues.stringValue);
-
-    [self.lightControllerBean sendSerialString:beanFriendlyValues.stringValue];
     
+    [self.lightControllerBean sendSerialString:beanFriendlyValues.stringValue];
 }
+
 - (IBAction)inputGainSliderValueChanged:(UISlider*)sender {
     self.audioController.inputGain = sender.value;
 }
