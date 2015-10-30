@@ -33,6 +33,10 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *inputPeakBar;
 @property (weak, nonatomic) IBOutlet UISlider *inputGainSlider;
 @property (weak, nonatomic) IBOutlet MPVolumeView *volumeView;
+@property (weak, nonatomic) IBOutlet UIView *colorDisplayView;
+@property (weak, nonatomic) IBOutlet UISlider *redSlider;
+@property (weak, nonatomic) IBOutlet UISlider *greenSlider;
+@property (weak, nonatomic) IBOutlet UISlider *blueSlider;
 
 
 @end
@@ -250,11 +254,17 @@ static inline float translate(float val, float min, float max) {
 }
 
 
-//-(void)bean:(PTDBean *)bean serialDataReceived:(NSData *)data{
-//    NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(dataString);
-//}
-
+- (IBAction)redSliderChanged:(id)sender {
+    self.colorDisplayView.backgroundColor = [UIColor colorWithRed:self.redSlider.value/255.0f green:self.greenSlider.value/255.0f blue:self.blueSlider.value/255.0f alpha:1.0f];
+}
+- (IBAction)greenSliderChanged:(id)sender {
+    self.colorDisplayView.backgroundColor = [UIColor colorWithRed:self.redSlider.value/255.0f green:self.greenSlider.value/255.0f blue:self.blueSlider.value/255.0f alpha:1.0f];
+    
+}
+- (IBAction)blueSliderChanged:(id)sender {
+    self.colorDisplayView.backgroundColor = [UIColor colorWithRed:self.redSlider.value/255.0f green:self.greenSlider.value/255.0f blue:self.blueSlider.value/255.0f alpha:1.0f];
+    
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
