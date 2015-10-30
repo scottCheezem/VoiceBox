@@ -14,11 +14,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "BeanBrowserViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 #import <PTDBean.h>
 #define BAR_MIN_VAL -20
 #define BAR_MAX_VAL 0
 
-
+//static const int kAudioRouteChanged;
 
 @interface TAAEAudioViewController ()<PTDBeanDelegate>
 @property(nonatomic, retain) AEAudioController *audioController;
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *inputAveBar;
 @property (weak, nonatomic) IBOutlet UIProgressView *inputPeakBar;
 @property (weak, nonatomic) IBOutlet UISlider *inputGainSlider;
+@property (weak, nonatomic) IBOutlet MPVolumeView *volumeView;
 
 
 @end
@@ -40,6 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupAduioController];
+    self.volumeView.showsVolumeSlider = YES;
+    self.volumeView.showsRouteButton = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,10 +79,16 @@
     
     AVAudioSession* session = [AVAudioSession sharedInstance];
     
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord
-    withOptions:AVAudioSessionCategoryOptionAllowBluetooth
-    error:&audioError];
+//    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&audioError];
+    
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionAllowBluetooth|AVAudioSessionCategoryOptionDefaultToSpeaker
+                   error:&audioError];
 
+    
+    [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&audioError];
+    
+    [session setPreferredInput:[self bluetoothAudioDevice] error:&audioError]; 
+    
     
 //    BOOL success;
 //    NSError* error;
@@ -88,7 +98,7 @@
     
 //    success = [session setActive:YES error:&error];
     
-//    [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&audioError];
+  
     
     
 //    else
@@ -99,23 +109,76 @@
 //    }
     
     [self.audioController start:&audioError];
+    
 
 }
+
+
+- (AVAudioSessionPortDescription*)bluetoothAudioDevice
+{
+    NSArray* bluetoothRoutes = @[AVAudioSessionPortBluetoothA2DP, AVAudioSessionPortBluetoothLE, AVAudioSessionPortBluetoothHFP];
+    return [self audioDeviceFromTypes:bluetoothRoutes];
+}
+
+- (AVAudioSessionPortDescription*)builtinAudioDevice
+{
+    NSArray* builtinRoutes = @[AVAudioSessionPortBuiltInMic];
+    return [self audioDeviceFromTypes:builtinRoutes];
+}
+
+- (AVAudioSessionPortDescription*)speakerAudioDevice
+{
+    NSArray* builtinRoutes = @[AVAudioSessionPortBuiltInSpeaker];
+    return [self audioDeviceFromTypes:builtinRoutes];
+}
+
+- (AVAudioSessionPortDescription*)audioDeviceFromTypes:(NSArray*)types
+{
+    NSArray* routes = [[AVAudioSession sharedInstance] availableInputs];
+    for (AVAudioSessionPortDescription* route in routes)
+    {
+        if ([types containsObject:route.portType])
+        {
+            return route;
+        }
+    }
+    return nil;
+}
+
+- (BOOL)switchBluetooth:(BOOL)onOrOff
+{
+    NSError* audioError = nil;
+    BOOL changeResult = NO;
+    if (onOrOff == YES)
+    {
+        AVAudioSessionPortDescription* _bluetoothPort = [self bluetoothAudioDevice];
+        changeResult = [[AVAudioSession sharedInstance] setPreferredInput:_bluetoothPort
+                                                                    error:&audioError];
+    }
+    else
+    {
+        AVAudioSessionPortDescription* builtinPort = [self builtinAudioDevice];
+        changeResult = [[AVAudioSession sharedInstance] setPreferredInput:builtinPort
+                                                                    error:&audioError];
+    }
+    return changeResult;
+}
+
 
 -(void)setLightControllerBean:(PTDBean *)lightControllerBean{
     _lightControllerBean = lightControllerBean;
     _lightControllerBean.delegate = self;
-    self.beanTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateBean) userInfo:nil repeats:YES];
+//    self.beanTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateBean) userInfo:nil repeats:YES];
 }
 
-
+//scale an input to a 0 to 1 value between a min an max value
 static inline float translate(float val, float min, float max) {
     if ( val < min ) val = min;
     if ( val > max ) val = max;
     return (val - min) / (max - min);
 }
 
-
+//updated the local UI
 -(void)updateLevels:(NSTimer*)timer{
     
     Float32 inputAve, inputPeak;
@@ -126,23 +189,30 @@ static inline float translate(float val, float min, float max) {
     self.inputAveBar.progress = translate(inputAve, BAR_MIN_VAL, BAR_MAX_VAL);
     self.inputPeakBar.progress = translatedInputPeak;
     
-    
-    
+    if(self.lightControllerBean != nil){
+        [self updateBean:inputAve :inputPeak];
+    }
     
 }
 
--(void)updateBean{
+-(void)updateBean:(Float32)inputAve :(Float32)inputPeak{
     
-    Float32 inputAve, inputPeak;
+//    Float32 inputAve, inputPeak;
     [self.audioController inputAveragePowerLevel:&inputAve peakHoldLevel:&inputPeak];
     //    NSLog(@"inputAve:%f, inputPeak:%f", inputAve, inputPeak);
     float translatedInputPeak = translate(inputPeak, BAR_MIN_VAL, BAR_MAX_VAL);
     
-    float scaledInputPeak = translatedInputPeak * 255;
-    NSNumber *beanFriendlyValues = [NSNumber numberWithFloat:scaledInputPeak];
-    NSLog(@"sending %@", beanFriendlyValues.stringValue);
+    CGFloat scaledInputPeak = translatedInputPeak * 255;
     
-    [self.lightControllerBean sendSerialString:beanFriendlyValues.stringValue];
+    Byte colorData[3];
+    colorData[0] = scaledInputPeak;
+    colorData[1] = scaledInputPeak;
+    colorData[2] = scaledInputPeak;
+    
+    NSData *beanData = [NSData dataWithBytes:colorData length:sizeof(colorData)];
+    
+    [self.lightControllerBean setScratchBank:1 data:beanData];
+    
 }
 
 - (IBAction)inputGainSliderValueChanged:(UISlider*)sender {
@@ -180,10 +250,10 @@ static inline float translate(float val, float min, float max) {
 }
 
 
--(void)bean:(PTDBean *)bean serialDataReceived:(NSData *)data{
-    NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(dataString);
-}
+//-(void)bean:(PTDBean *)bean serialDataReceived:(NSData *)data{
+//    NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(dataString);
+//}
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

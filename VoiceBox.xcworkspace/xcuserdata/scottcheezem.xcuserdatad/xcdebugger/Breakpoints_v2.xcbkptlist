@@ -201,69 +201,13 @@
          <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VoiceBox/TAAEAudioViewController.m"
-            timestampString = "467524484.305359"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "-inputGainSliderValueChanged:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "VoiceBox/TAAEAudioViewController.m"
-            timestampString = "467524484.305359"
+            timestampString = "467859822.941811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-updateLevels:"
-            landmarkType = "5">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                  <ActionContent
-                     consoleCommand = "po self.lightControllerBean">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VoiceBox/TAAEAudioViewController.m"
-            timestampString = "467524484.305359"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-updateBean"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "Yes"
-            filePath = "VoiceBox/TAAEAudioViewController.m"
-            timestampString = "467524484.305359"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-pitchSwitchValueCHanged:"
             landmarkType = "5">
             <Actions>
@@ -283,12 +227,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VoiceBox/TAAEAudioViewController.m"
-            timestampString = "467523977.204093"
+            timestampString = "467768984.319806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-setupAduioController"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-updateLevels:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
