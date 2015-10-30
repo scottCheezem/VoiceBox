@@ -78,7 +78,7 @@
                                     <action selector="pitchSwitchValueCHanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6Sx-TV-w1R"/>
                                 </connections>
                             </switch>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="-1200" maxValue="1200" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-4m-ScV">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="-600" maxValue="600" translatesAutoresizingMaskIntoConstraints="NO" id="aqC-4m-ScV">
                                 <rect key="frame" x="223" y="339" width="154" height="31"/>
                                 <animations/>
                                 <connections>
