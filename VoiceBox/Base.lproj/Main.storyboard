@@ -100,7 +100,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="127" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="WLD-ha-pdb">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WLD-ha-pdb">
                                 <rect key="frame" x="223" y="341" width="118" height="31"/>
                                 <animations/>
                                 <color key="minimumTrackTintColor" red="0.33725490200000002" green="0.89411764709999997" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,7 +108,7 @@
                                     <action selector="greenSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7H2-Zg-ekx"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="127" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="0JL-bj-qfL">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0JL-bj-qfL">
                                 <rect key="frame" x="223" y="375" width="118" height="31"/>
                                 <animations/>
                                 <connections>
@@ -124,7 +124,7 @@
                                     <constraint firstAttribute="height" constant="100" id="efo-tg-jEG"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="127" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="42m-iV-eQg">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="42m-iV-eQg">
                                 <rect key="frame" x="223" y="308" width="118" height="31"/>
                                 <animations/>
                                 <constraints>

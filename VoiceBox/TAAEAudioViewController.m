@@ -48,6 +48,7 @@
     [self setupAduioController];
     self.volumeView.showsVolumeSlider = YES;
     self.volumeView.showsRouteButton = YES;
+    [self updateColorDisplayView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -209,9 +210,9 @@ static inline float translate(float val, float min, float max) {
     CGFloat scaledInputPeak = translatedInputPeak * 255;
     
     Byte colorData[3];
-    colorData[0] = scaledInputPeak;
-    colorData[1] = scaledInputPeak;
-    colorData[2] = scaledInputPeak;
+    colorData[0] = scaledInputPeak*self.redSlider.value;
+    colorData[1] = scaledInputPeak*self.greenSlider.value;
+    colorData[2] = scaledInputPeak*self.blueSlider.value;
     
     NSData *beanData = [NSData dataWithBytes:colorData length:sizeof(colorData)];
     
@@ -245,7 +246,7 @@ static inline float translate(float val, float min, float max) {
     
     if(sender.isOn){
         self.pitchFilter = [[AENewTimePitchFilter alloc]init];
-        self.pitchFilter.overlap = 12;//normally 8.0;
+        self.pitchFilter.overlap = 10;//normally 8.0;
         [self.audioController addFilter:self.pitchFilter];
     }else{
         [self.audioController removeFilter:self.pitchFilter];
@@ -254,15 +255,19 @@ static inline float translate(float val, float min, float max) {
 }
 
 
+-(void)updateColorDisplayView{
+    self.colorDisplayView.backgroundColor = [UIColor colorWithRed:self.redSlider.value green:self.greenSlider.value blue:self.blueSlider.value alpha:1.0f];
+}
+
 - (IBAction)redSliderChanged:(id)sender {
-    self.colorDisplayView.backgroundColor = [UIColor colorWithRed:self.redSlider.value/255.0f green:self.greenSlider.value/255.0f blue:self.blueSlider.value/255.0f alpha:1.0f];
+    [self updateColorDisplayView];
 }
 - (IBAction)greenSliderChanged:(id)sender {
-    self.colorDisplayView.backgroundColor = [UIColor colorWithRed:self.redSlider.value/255.0f green:self.greenSlider.value/255.0f blue:self.blueSlider.value/255.0f alpha:1.0f];
+    [self updateColorDisplayView];
     
 }
 - (IBAction)blueSliderChanged:(id)sender {
-    self.colorDisplayView.backgroundColor = [UIColor colorWithRed:self.redSlider.value/255.0f green:self.greenSlider.value/255.0f blue:self.blueSlider.value/255.0f alpha:1.0f];
+    [self updateColorDisplayView];
     
 }
 
