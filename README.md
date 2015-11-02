@@ -6,6 +6,10 @@ in order to get started with the code you will first need the latest stable Xcod
 
 Start by cloning this repo to your desktop.  open a terminal, cd in to the repo and run pod install to install the Bean-iOS-SDK and The Amazing Audio Engine project dependancies.  
 
+
+[Photographic Evidence](https://raw.githubusercontent.com/scottCheezem/VoiceBox/master/maskpic1.jpg)
+[More Photographic Evidence](https://raw.githubusercontent.com/scottCheezem/VoiceBox/master/maskpic2.jpg)
+
 ##Hardware
 I’ve included the [Low Poly Mask from Thingiverse](http://www.thingiverse.com/thing:174840) that I used.  But this should work for any mask (just make sure there’s room for your face after adding in the hardware)
 
